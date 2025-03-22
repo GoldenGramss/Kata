@@ -21,6 +21,11 @@ static void test_1_string(void)
    TEST_ASSERT_EQUAL_UINT8(1, string_calculator("1"));
 }
 
+static void test_12_string(void)
+{
+  TEST_ASSERT_EQUAL_UINT8(12, string_calculator("12"));
+}
+
 static void test_1_1_string(void)
 {
    TEST_ASSERT_EQUAL_UINT8(2, string_calculator("1,1"));
@@ -53,6 +58,7 @@ int main(void)
 
    RUN_TEST(test_empty_string);
    RUN_TEST(test_1_string);
+   RUN_TEST(test_12_string);
    RUN_TEST(test_1_1_string);
    RUN_TEST(test_1_2_string);
    RUN_TEST(test_1_newline_2_string);

@@ -2,35 +2,34 @@
 #include <math.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
+
+#define NEUTRAL_ELEMENT 0
+
+char* my_strdup(const char* FROM);
 
 int	string_calculator(char *input)
 {
-	int	res;
-	int	i;
-	int	j;
+  int sum = NEUTRAL_ELEMENT;
+  
+  char* input_copy = my_strdup(input);
 
-	i = 0;
-	res = 0;
-	j = 0;
-	
-	while (input[i] != '\0')
-	{
-		if (j == 2)
-                {
-                        return (0);
-                }
-			
-		else if (input[i] > '0' && input[i] <= '9')
-		{
-			res = res + (input[i] - '0');
-			i++;
-			j = 0;
-		}
-		else 
-		{
-			i++;
-			j++;
-		}
-	}
-	return (res);
+  char* token;
+  token = strtok(input_copy, ",");
+  while (token != NULL)
+    {
+      sum += atoi(token);
+      token = strtok(NULL, ",");
+    }
+  free(input_copy);
+  return sum;
+}
+
+
+char* my_strdup(const char* FROM)
+{
+  char * input_copy = (char*) malloc(sizeof(char) * strlen(FROM));
+  if (input_copy == NULL) abort();
+  strcpy(input_copy, FROM);
+  return input_copy;
 }
