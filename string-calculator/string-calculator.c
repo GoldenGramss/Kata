@@ -5,9 +5,32 @@
 
 int	string_calculator(char *input)
 {
-	if (input != 0)
+	int	res;
+	int	i;
+	int	j;
+
+	i = 0;
+	res = 0;
+	j = 0;
+	
+	while (input[i] != '\0')
 	{
-		return (1);
+		if (j == 2)
+                {
+                        return (0);
+                }
+			
+		else if (input[i] > '0' && input[i] <= '9')
+		{
+			res = res + (input[i] - '0');
+			i++;
+			j = 0;
+		}
+		else 
+		{
+			i++;
+			j++;
+		}
 	}
-	return (0);
+	return (res);
 }
